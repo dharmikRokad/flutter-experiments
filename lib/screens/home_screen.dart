@@ -5,6 +5,7 @@ import 'package:flutter_experiments/utils/data/constants.dart';
 import 'package:flutter_experiments/routes/app_routes.dart';
 import 'package:flutter_experiments/utils/extensions/num_extension.dart';
 import 'package:flutter_experiments/widgets/glass_container.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final List<Map<String, dynamic>> pages = [
   {
@@ -16,6 +17,12 @@ final List<Map<String, dynamic>> pages = [
     kRouteKey: AppRoutes.writeSomethingScreen,
     kTitleKey: 'Write Something',
     kColorKey: Colors.pink,
+  },
+  {
+    kRouteKey: AppRoutes.blackholeScreen,
+    kTitleKey: 'Blackhole',
+    kDescKey: 'Get ready to go into the void.',
+    kColorKey: Colors.purple,
   },
   {
     kRouteKey: AppRoutes.loginAnimationScreen,
@@ -132,16 +139,22 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Text(
                   configs[kTitleKey],
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                      color: Colors.white),
+                  style: GoogleFonts.dosis(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                  ),
                   maxLines: 2,
                 ),
                 8.verticalSpace,
                 Text(
                   configs[kDescKey] ?? '',
-                  style: const TextStyle(fontSize: 15, color: Colors.white),
+                  style: GoogleFonts.dosis(
+                    fontSize: 15,
+                    color: Colors.white,
+                    // letterSpacing: 1.5,
+                  ),
                 ),
                 const Spacer(),
                 Align(

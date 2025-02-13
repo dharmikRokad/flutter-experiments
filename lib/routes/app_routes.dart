@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_experiments/screens/animated_list_screen.dart';
 import 'package:flutter_experiments/screens/audio_screen.dart';
+import 'package:flutter_experiments/screens/blackhole_screen.dart';
 import 'package:flutter_experiments/screens/chat_screen.dart';
 import 'package:flutter_experiments/screens/drag_drop.dart';
 import 'package:flutter_experiments/screens/login_animation_screen.dart';
 import 'package:flutter_experiments/screens/sensors_plus_screen.dart';
+import 'package:flutter_experiments/screens/splash_screen.dart';
 import 'package:flutter_experiments/screens/wondors/location_details_screen.dart';
 import 'package:flutter_experiments/screens/wondors/wonders_screen.dart';
 import 'package:flutter_experiments/screens/home_screen.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_experiments/screens/write_something_screen.dart';
 
 class AppRouter {
   static getRoutes() => <String, Widget Function(BuildContext)>{
+        AppRoutes.splashScreen: (context) => const SplashScreen(),
         AppRoutes.homeScreen: (context) => const HomeScreen(),
         AppRoutes.reorderableGridScreen: (context) =>
             const ReorderableGridScreen(),
@@ -29,13 +32,22 @@ class AppRouter {
         AppRoutes.audioScreen: (context) => const AudioScreen(),
         AppRoutes.loginAnimationScreen: (context) =>
             const LoginAnimationScreen(),
+        AppRoutes.blackholeScreen: (context) => const BlackholeScreen(),
       };
 
   /// To generate custom page builers for named routes
   static Route<dynamic>? generateRoutes(RouteSettings settings) =>
       switch (settings.name) {
+        AppRoutes.splashScreen => _customFadeTransition(
+            child: const SplashScreen(),
+            settings: settings,
+          ),
         AppRoutes.reorderableGridScreen => _customFadeTransition(
             child: const ReorderableGridScreen(),
+            settings: settings,
+          ),
+        AppRoutes.blackholeScreen => _customFadeTransition(
+            child: const BlackholeScreen(),
             settings: settings,
           ),
         AppRoutes.writeSomethingScreen => _customFadeTransition(
@@ -131,4 +143,5 @@ class AppRoutes {
   static const String sensorsPlusScreen = '/sensors_plus_screen';
   static const String audioScreen = '/audio_screen';
   static const String loginAnimationScreen = '/login_animation_screen';
+  static const String blackholeScreen = '/blackhole_screen';
 }
